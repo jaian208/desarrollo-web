@@ -1,26 +1,23 @@
-# Desarrollo Web
+# GameZone
 
-Título del proyecto:
-GameZone
-
-Descripción
+## Descripción
 GameZone es una tienda de videojuegos en línea que ofrece un amplio catálogo
 de títulos para todos los gustos, adaptándose constantemente a la evolución de la industria y del mercado.
 Nuestro objetivo es brindar a los jugadores las mejores experiencias, 
 permitiéndoles descubrir, explorar y adquirir videojuegos de forma rápida,
 segura e intuitiva desde cualquier dispositivo.
 
-GameZone está dirigido a:
+## GameZone está dirigido a:
 
 Gamers que buscan títulos nuevos, populares o clásicos.
 Jugadores casuales que desean una experiencia divertida sin complicaciones.
 Personas mayores de 16 años o niños mayores de 8 años con supervisión de un adulto.
 
-Integrantes:
+## Integrantes:
 Juan Esteban Cristancho Camacho – Desarrollo / Diseño
 Jaime Andrey Rodríguez Peñaloza – Desarrollo / Investigación
 
-5 Inspiraciones ó Referencias (con links e imágenes):
+## 5 Inspiraciones ó Referencias (con links e imágenes):
 Estas plataformas nos inspiraron por su diseño, catálogo y experiencia de usuario:
 
 Steam
