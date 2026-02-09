@@ -82,7 +82,25 @@ a los desarrolladores ejecutar código JavaScript fuera de un navegador web.
 
 ## Instalación y uso
 
+Git:
 
+https://git-scm.com/install/
+
+Mediante el instalador oficial de Git, puedes seleccionar el sistema operativo de tu PC, el directorio donde deseas instalar Git y finalmente la instalación.
+
+Node Js:
+
+https://nodejs.org/en/download
+
+Mediante el archivo de extensión msi, puedes abrir el instalador y configurar el directorio del programa, finalmente el instalador se encargará de manejar la paqueteria
+adicional para terminar con el programa.
+
+Verificación:
+
+Puedes verificar la versión del programa escribiendo en el CMD los siguientes comandos:
+
+node -v
+git -v
 
 Tablero de trabajo por sprints 
 
