@@ -88,6 +88,10 @@ https://git-scm.com/install/
 
 Mediante el instalador oficial de Git, puedes seleccionar el sistema operativo de tu PC, el directorio donde deseas instalar Git y finalmente la instalación.
 
+<img width="588" height="459" alt="image" src="https://github.com/user-attachments/assets/198216b1-aa75-4c5c-af49-a0a5d711bf85" />
+
+Una vez leidas las instrucciones y políticas del programa, la instalación procederá a realizarse de forma automática.
+
 Node Js:
 
 https://nodejs.org/en/download
@@ -108,13 +112,15 @@ Configuramos el directorio del programa
 Permitimos que se instalen las herramientas adicionales y finalmente instalamos.
 
 
-
 Verificación:
 
 Puedes verificar la versión del programa escribiendo en el CMD los siguientes comandos:
 
 node -v
 git -v
+
+<img width="1106" height="194" alt="image" src="https://github.com/user-attachments/assets/90a01bca-913f-441e-a565-8cac2d41bcd9" />
+
 
 ## Tablero de trabajo por sprints 
 
