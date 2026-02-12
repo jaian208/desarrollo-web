@@ -95,6 +95,20 @@ https://nodejs.org/en/download
 Mediante el archivo de extensión msi, puedes abrir el instalador y configurar el directorio del programa, finalmente el instalador se encargará de manejar la paqueteria
 adicional para terminar con el programa.
 
+<img width="490" height="382" alt="image" src="https://github.com/user-attachments/assets/dee64974-cc94-43a7-9f65-df47e779de39" />
+
+Continuamos y aceptamos las politicas del programa.
+
+<img width="492" height="380" alt="image" src="https://github.com/user-attachments/assets/bf6e45dd-7699-437e-a00e-800e707e16c0" />
+
+Configuramos el directorio del programa
+
+<img width="489" height="381" alt="image" src="https://github.com/user-attachments/assets/64c11266-4f2d-428b-a668-0bb6d4f0d1f2" />
+
+Permitimos que se instalen las herramientas adicionales y finalmente instalamos.
+
+
+
 Verificación:
 
 Puedes verificar la versión del programa escribiendo en el CMD los siguientes comandos:
