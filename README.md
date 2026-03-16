@@ -88,7 +88,38 @@ Bootstrap:
 
 El framework de front-end más popular del mundo, diseñado para facilitar la creación de sitios web responsivos 
 
+EJS:
+<img width="599" height="132" alt="jake_display" src="https://github.com/user-attachments/assets/aef51fc0-53f4-40cb-bb6f-8c347e37ddf8" />
 
+motor de plantillas para Node.js que permite generar marcado HTML dinámico utilizando JavaScript directo dentro de archivos .ejs. Es popular por su simplicidad, ideal para el renderizado del lado del servidor (SSR) en aplicaciones Express, permitiendo incluir variables, bucles y parciales (componentes reutilizables).
+
+Sequelize:
+<img width="209" height="241" alt="images" src="https://github.com/user-attachments/assets/6bce67c4-4b2e-410e-80a0-3e22973695a9" />
+
+ORM (Object-Relational Mapping) para Node.js basado en promesas. Te permite interactuar con bases de datos relacionales usando objetos de JavaScript en lugar de escribir consultas SQL puras [1, 2].
+
+bcrypt:
+
+<img width="530" height="296" alt="530px-Bcrypt" src="https://github.com/user-attachments/assets/99b0f275-fa28-47d8-9619-8fea0631f03c" />
+
+función de hashing diseñada específicamente para almacenar contraseñas de forma segura. A diferencia de otros algoritmos, su principal característica es que es adaptativo y deliberadamente lento, lo que dificulta enormemente los ataques de fuerza bruta.
+
+express-session:
+<img width="225" height="225" alt="images" src="https://github.com/user-attachments/assets/3dc76fd9-68b8-4e58-ad60-3a5ca377c3cb" />
+
+es un middleware para Express.js que permite gestionar sesiones de usuario en aplicaciones de Node.js. A diferencia de otros métodos que guardan toda la información en el navegador, este módulo almacena los datos en el servidor y solo envía un identificador único (ID de sesión) al cliente mediante una cookie firmada.
+
+MySQL:
+
+<img width="1120" height="480" alt="ECX-1909_Hero_MySQL_600x400@2x-1" src="https://github.com/user-attachments/assets/09385282-da23-4247-9e45-77355b75bddd" />
+
+sistema de gestión de bases de datos relacionales (RDBMS) de código abierto más popular del mundo. Es una herramienta fundamental para el desarrollo web dinámico, utilizada por gigantes tecnológicos como Facebook, Netflix, Uber y Airbnb.
+
+XAMPP:
+
+![image-98](https://github.com/user-attachments/assets/f6bcef93-1e01-46db-aaf1-5c8a28bf68cf)
+
+suite de software libre que funciona como un entorno de desarrollo local, permitiéndote probar sitios y aplicaciones web en tu propio PC sin necesidad de un servidor externo.
 
 
 ## Instalación y uso
@@ -132,6 +163,11 @@ git -v
 
 <img width="1106" height="194" alt="image" src="https://github.com/user-attachments/assets/90a01bca-913f-441e-a565-8cac2d41bcd9" />
 
+EJS:
+<img width="599" height="132" alt="jake_display" src="https://github.com/user-attachments/assets/aef51fc0-53f4-40cb-bb6f-8c347e37ddf8" />
+instalacion 
+
+$ npm install ejs
 
 ## Tablero de trabajo por sprints 
 
