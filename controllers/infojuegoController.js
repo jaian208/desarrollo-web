@@ -22,3 +22,4 @@ exports.juegoEscogido = async (req, res) => {
         res.status(500).send('Erro ao cargar la informacion del juego');
     }
 }
+

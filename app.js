@@ -4,6 +4,7 @@ const express=require('express');
 const sequelize= require('./database/configDatabase');
 const Juego=require('./models/juego');
 const User=require('./models/user');
+const session= require('express-session');
 //JS y puertos
 const app=express();
 const port= 300;
@@ -40,6 +41,23 @@ sequelize.authenticate().then(() => {
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
+
+//Usar express-session para capturar los datos del usuario en la DB para las páginas
+
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: false,
+}));
+
+//Middleware para inyectar los datos en las vistas
+
+app.use((req,res,next)=>{
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+
 app.set('view engine','ejs');
 
 
@@ -51,6 +69,8 @@ const userRoutes = require("./router/userRouter");
 
 const authenticationRoutes= require("./router/authenticationRouter");
 
+const carritoRoutes= require("./router/carritoRouter");
+
 const path = require("node:path");
 
 app.use("/", homeRoutes);
@@ -60,6 +80,8 @@ app.use("/", juegoRoutes);
 app.use("/", authenticationRoutes);
 
 app.use("/", userRoutes);
+
+app.use("/", carritoRoutes);
 
 
 

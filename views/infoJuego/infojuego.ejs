@@ -26,7 +26,9 @@
             <div class="card bg-secondary text-light border-0 shadow">
                 <div class="card-body p-4" style="background-color: #16202d;"> <h2 class="text-success mb-4"><%= juego.precio %> COP</h2>
 
-                    <button class="btn btn-success w-100 btn-lg mb-2 fw-bold">Añadir al carro</button>
+                    <a href="/carrito/agregar/<%= juego.id %>" class="btn btn-success w-100 btn-lg mb-2 fw-bold text-center text-decoration-none">
+                        Añadir al carro
+                    </a>
                     <button class="btn btn-outline-light w-100 mb-4">Añadir a la lista de deseos</button>
 
                     <ul class="list-unstyled text-light-50 mt-4" style="font-size: 0.9rem;">

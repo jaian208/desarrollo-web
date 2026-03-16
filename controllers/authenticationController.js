@@ -21,10 +21,30 @@ exports.AutenticarLogin = async (req, res) => {
         if (!passwordCorrecta) {
             return res.status(401).send('Contraseña incorrecta, intente nuevamente');
         }
-        res.redirect('/');
+
+        //Utilizar los datos para la session
+
+        req.session.user= {
+            id: UsuarioDB.id,
+            email: UsuarioDB.email,
+            nombre: UsuarioDB.nombre,
+        };
+        //Guardamos los datos para evitar que redirect se los salte.
+
+        req.session.save((err) => {
+            if (err) {
+                console.log('No se pudo iniciar sesión',err);
+                return res.status(500).send('Error critico');
+            }else {
+                res.redirect('/');
+            }
+        });
+
     }catch(error) {
         console.log('Error crítico en el sistema');
         return res.status(500).send('Error crítico');
     }
+
+
 
 }

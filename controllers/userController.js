@@ -30,7 +30,7 @@ exports.crearUsuario = async (req, res) => {
         });
         res.redirect('/login');
     }catch(error){
-        console.error('💀 Error crítico al registrar Spartan:', error);
-        res.status(500).send('Error interno en la base de la UNSC al intentar crear el registro.');
+        console.error('Error crítico al registrar:', error);
+        res.status(500).send('Error interno en la base.');
     }
 }
