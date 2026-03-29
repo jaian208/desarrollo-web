@@ -77,7 +77,7 @@ Continuar con la mejora del diseño visual del sitio web.
 
 se implementó un sistema para el ingreso de nuevos juegos mediante un formulario, el cual está restringido a un rol específico de usuario, mejorando así el control y la administración del contenido.
 
-Aspectos positivos
+## Aspectos positivos:
 
 Se logró una mejor organización general del proyecto.
 
@@ -85,7 +85,7 @@ Se implementó correctamente el formulario para la carga de productos.
 
 Se aplicó control de acceso por roles para restringir funcionalidades.
 
-Aspectos a mejorar
+## Aspectos a mejorar:
 
 Algunos problemas en la integración de funcionalidades entre diferentes partes del sistema.
 
