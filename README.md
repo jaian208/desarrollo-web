@@ -95,7 +95,7 @@ El framework de front-end más popular del mundo, diseñado para facilitar la cr
 
 Motor de plantillas para Node.js que permite generar marcado HTML dinámico utilizando JavaScript directo dentro de archivos .ejs. Es popular por su simplicidad, ideal para el renderizado del lado del servidor (SSR) en aplicaciones Express, permitiendo incluir variables, bucles y parciales (componentes reutilizables).
 
-#Sequelize:
+# Sequelize:
 
 <img width="209" height="241" alt="images" src="https://github.com/user-attachments/assets/6bce67c4-4b2e-410e-80a0-3e22973695a9" />
 
