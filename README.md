@@ -208,6 +208,8 @@ INSERT INTO juegos (nombre, imagen_portada, precio, descripcion, categoria, crea
 ('Minecraft', '/images/home/minecraft.png', 180000, 'Explora mundos infinitos y construye cualquier cosa desde la casa más simple hasta el más grandioso de los castillos.', 'Aventura', NOW(), NOW()),
 ('Dark Souls 2', 'https://store-images.s-microsoft.com/image/apps.2435.71415569152440938.6739ca29-cd37-4678-ab4c-9de7eea4d902.ebef4dc5-7000-4381-aeb3-ec706fb63c03', 48000, 'La segunda entrega de la serie Dark Souls está ambientada en el reino de Drangleic. Prepárate para morir repetidamente.', 'Aventura', NOW(), NOW());
 
+<img width="1910" height="938" alt="image" src="https://github.com/user-attachments/assets/9ecdd331-778e-4797-8902-e630498307a3" />
+
 
 Con esto, evitaremos que cuando quieras probar nuestro proyecto, tengas que insertar X cantidad de juegos para que accedas a todas las funcionalidades.
 
