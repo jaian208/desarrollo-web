@@ -73,3 +73,24 @@ implementar encriptado de contraseña para los usuarios que se registren.
 
 Continuar con la mejora del diseño visual del sitio web.
 
+## Retrospectiva Sprint 3:
+
+se implementó un sistema para el ingreso de nuevos juegos mediante un formulario, el cual está restringido a un rol específico de usuario, mejorando así el control y la administración del contenido.
+
+Aspectos positivos
+
+Se logró una mejor organización general del proyecto.
+
+Se implementó correctamente el formulario para la carga de productos.
+
+Se aplicó control de acceso por roles para restringir funcionalidades.
+
+Aspectos a mejorar
+
+Algunos problemas en la integración de funcionalidades entre diferentes partes del sistema.
+
+Plan de mejora para el siguiente sprint
+
+Mejorar la integración entre módulos del sistema.
+
+Optimizar la organización del código para facilitar su mantenimiento.

@@ -18,7 +18,7 @@ async function ObtenerCategorias() {
     }));
 }
 
-    //
+    //Exportar home junto con todos los juegos presentes en la base de datos 
     exports.home = async (req, res) => {
         try {
             const JuegosDB = await Juego.findAll();
@@ -37,6 +37,7 @@ async function ObtenerCategorias() {
 
     }
 
+    //Mostrar las Categorías y los juegos que pertenezcan a cada categoría (sin funcionalidad por el momento)
     exports.categoria = async (req, res) => {
         try {
             const categoriaBuscada = req.params.nombreCategoria;

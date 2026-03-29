@@ -65,6 +65,12 @@ Gracias a la implementación de estas herramientas, se pudo lograr:
 -Registro y Login de Usuarios.
 -Encriptación de contraseña por motivos de seguridad.
 
+## QUINTA REUNION
+
+para facilitar el ingreso de productos al sitio, se acordó implementar un formulario que permita la carga de nuevos juegos. Este formulario estará restringido a un rol con credenciales admin, garantizando así un mejor control y administración del contenido publicado, realizar retoques en la vista del Logout, Inicio de sesión, Verificación de inicio de sesión
+
+Con esta planificación, el equipo queda preparado para iniciar de manera organizada y eficiente.
+
 
 
 
