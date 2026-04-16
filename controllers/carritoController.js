@@ -1,65 +1,110 @@
 const User = require('../models/user');
 const Juego = require('../models/juego');
-
+const sequelize = require('../database/configDatabase');
+const Carrito = require('../models/carrito');
 
 exports.agregaralCarro = async function (req, res) {
     try {
-        if(!req.session.user){
+        if (!req.session.user) {
             return res.redirect('/login');
         }
-        const idUsuario = req.session.user.id;
-        const idjuego = req.params.id;
 
-        //buscar user y juego
-        const UserDB = await User.findByPk(idUsuario);
-        const juegoAgregar= await Juego.findByPk(idjuego);
+        const userId = req.session.user.id;
+        const juegoId = req.params.id;
 
-        //Insertar registro a la tabla (usamos los metodos que Sequelize genera automáticamente para agregar un juego a User)
-        //Nuestro metodo add de User y su parametro sera el juego que deseemos agregar (cualquier metodo con sequelize necesita ser await)
-        await UserDB.addJuego(juegoAgregar);
+        await Carrito.create({
+            userId: userId,
+            juegoId: juegoId
+        });
 
         res.redirect('/carrito');
 
-    }catch(error){
-        console.log('Error al agregar el juego',error);
+    } catch (error) {
+        console.log('Error al agregar el juego', error);
         res.status(500).send('Error al agregar el juego');
     }
 }
 
 
 exports.MostrarCarro = async (req, res) => {
-    //Verificamos que exista una sesion
     try {
-        if(!req.session.user){
+        if (!req.session.user) {
             return res.redirect('/login');
         }
 
-    //Buscamos la id del user en la sesion (recordando que le dimos los mismos atributos que tiene en la base de datos)
-        const idusuario = req.session.user.id;
+        const userId = req.session.user.id;
 
-    //Buscamos el usuario mediante su id en la base de datos y los juegos que tiene asociados (en la tabla intermediaria). Luego, trae los atributos de esos juegos.
-        const Usuario= await User.findByPk(idusuario, {
-            include: Juego
+        const items = await Carrito.findAll({
+            where: { userId }
         });
 
+        const juegosEnCarrito = await Promise.all(
+            items.map(item => Juego.findByPk(item.juegoId))
+        );
 
-        //Esto permite que cualquier cosa que Sequelize traiga de Usuario denominado como Juego, lo meta en un array
-        const juegosEnCarrito = Usuario.Juegos || [];
-
-        //Inicializamos el acumulador total de precios
-        let total=0;
+        let total = 0;
         juegosEnCarrito.forEach(juego => {
-            total+= parseFloat(juego.precio);
+            total += parseFloat(juego.precio);
         });
 
-        //Renderizamos el carrito con el array de juegos y el total
-        res.render('carrito/carrito', {juegos: juegosEnCarrito, total: total});
+        res.render('carrito/carrito', {
+            juegos: juegosEnCarrito,
+            total
+        });
 
-
-
-    }catch(error){
-        console.log('Error al mostrar el carro el juego',error);
-        res.status(500).send('Error al mostrar el carro');
+    } catch (error) {
+        console.log('Error al mostrar el carrito', error);
+        res.status(500).send('Error al mostrar el carrito');
     }
+};
 
-}
+exports.eliminarJuego = async (req, res) => {
+    try {
+        const userId = req.session.user.id;
+        const juegoId = req.params.id;
+
+        await Carrito.destroy({
+            where: {
+                userId: userId,
+                juegoId: juegoId
+            }
+        });
+
+        res.redirect('/carrito');
+
+    } catch (error) {
+        console.log(error);
+        res.redirect('/carrito');
+    }
+};
+exports.finalizarCompra = async (req, res) => {
+    try {
+        if (!req.session.user) {
+            return res.redirect('/login');
+        }
+
+        const userId = req.session.user.id;
+
+        const usuario = await User.findByPk(userId, {
+            include: {
+                model: Juego,
+                as: 'carrito'
+            }
+        });
+
+        const juegosCarrito = usuario.carrito;
+
+        for (let juego of juegosCarrito) {
+            await usuario.addJuegosBiblioteca(juego);
+        }
+        await sequelize.models.Carrito.destroy({
+            where: { userId: userId }
+        });
+
+        res.redirect('/perfil');
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error al finalizar compra');
+    }
+};

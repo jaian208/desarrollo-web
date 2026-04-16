@@ -4,6 +4,7 @@ const express=require('express');
 const sequelize= require('./database/configDatabase');
 const Juego=require('./models/juego');
 const User=require('./models/user');
+const Carrito = require('./models/carrito');
 const session= require('express-session');
 //JS y puertos
 const app=express();
@@ -11,15 +12,40 @@ const port= 300;
 
 
 //Creación de tablas
-Juego.belongsToMany(User, {through: 'biblioteca'});
-User.belongsToMany(Juego, {through: 'biblioteca'});
+User.belongsToMany(Juego, {
+    through: 'biblioteca',
+    as: 'juegosBiblioteca',
+    foreignKey: 'userId',
+    otherKey: 'juegoId'
+});
+Juego.belongsToMany(User, {
+    through: 'biblioteca',
+    as: 'usuariosBiblioteca',
+    foreignKey: 'juegoId',
+    otherKey: 'userId'
+});
+User.belongsToMany(Juego, {
+    through: Carrito,
+    as: 'carrito',
+    foreignKey: 'userId',
+    otherKey: 'juegoId'
+});
+Juego.belongsToMany(User, {
+    through: Carrito,
+    as: 'usuariosCarrito',
+    foreignKey: 'juegoId',
+    otherKey: 'userId'
+});
+User.hasMany(Juego, { foreignKey: 'userId' });
+Juego.belongsTo(User, { foreignKey: 'userId' });
+
 
 
 //Sequelize
 sequelize.authenticate().then(() => {
 
     console.log('Conexion con la DB establecida');
-    return sequelize.sync();  //Se utiliza un return (lo que se denomina promesa en una funcion asincronica para asegurarse de que se haga)
+    return sequelize.sync({ alter: false }); //Se utiliza un return (lo que se denomina promesa en una funcion asincronica para asegurarse de que se haga)
 
 }).then(() => {
     console.log('Tablas actualizadas correctamente');

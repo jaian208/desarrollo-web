@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require("bcrypt");
+const Juego = require('../models/juego');
 const {promisify} = require("util");
 
 
@@ -59,8 +60,30 @@ exports.AutenticarLogin = async (req, res) => {
 
 //Renderizar el perfil usando los atributos de sesion
 exports.mostrarPerfil = async (req, res) => {
-    res.render('perfil/perfil', {user: req.session.user});
-}
+    try {
+
+        const user = req.session.user;
+
+        if (!user) return res.redirect('/login');
+
+        const usuariodb = await User.findByPk(user.id);
+        const juegosbiblioteca = await usuariodb.getJuegosBiblioteca();
+
+        const juegoscreados = await Juego.findAll({
+            where: {
+                userId: user.id
+            }
+        });
+        res.render('perfil/perfil', {
+            user,
+            juegosbiblioteca,
+            juegoscreados
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 
 
@@ -91,8 +114,3 @@ exports.CerrarSesion= async (req, res) => {
 
         }
 }
-
-
-
-
-

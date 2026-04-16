@@ -1,68 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<%- include("../partials/head") %>
+<%- include('../partials/head', { title: 'Editar Juego', pageCSS: 'edicion' }) %>
 
-<body>
+<body class="bg-dark text-light">
 
 <%- include("../partials/navbar") %>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card border-0 shadow-lg" style="background-color: #16202d;">
+<div class="container mt-5 pt-4 mb-5">
 
-                <div class="card-header text-center border-secondary py-3" style="background-color: #1b2838;">
-                    <h2 class="mb-0 fw-bold text-white">Actualizar Archivos del Juego</h2>
+    <div class="row justify-content-center">
+
+        <div class="col-lg-9">
+
+            <div class="edit-card shadow-lg">
+                <div class="edit-header text-center">
+                    <h2 class="fw-bold mb-1">Editar Juego</h2>
+                    <p class="text-white-50 small m-0">Modifica la información del título</p>
                 </div>
 
-                <div class="card-body p-4">
+                <div class="p-4">
+                    <div class="preview-box mb-4 text-center">
+                        <img src="<%= juego.imagen_portada %>"
+                             id="previewImg"
+                             class="preview-img">
+                    </div>
 
                     <form action="/edicion/<%= juego.id %>" method="POST">
 
                         <div class="row">
+
                             <div class="col-md-6 mb-3">
-                                <label for="nombre" class="form-label text-white-50">Título del Juego</label>
-                                <input type="text" class="form-control bg-dark text-light border-secondary" id="nombre" name="nombre" value="<%= juego.nombre %>" required>
+                                <label class="form-label text-white-50">Título</label>
+                                <input type="text"
+                                       class="form-control custom-input"
+                                       name="nombre"
+                                       value="<%= juego.nombre %>"
+                                       required>
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="categoria" class="form-label text-white-50">Categoría / Consola</label>
-                                <input type="text" class="form-control bg-dark text-light border-secondary" id="categoria" name="categoria" value="<%= juego.categoria %>" required>
+                                <label class="form-label text-white-50">Categoría</label>
+                                <input type="text"
+                                       class="form-control custom-input"
+                                       name="categoria"
+                                       value="<%= juego.categoria %>"
+                                       required>
                             </div>
+
                         </div>
 
                         <div class="mb-3">
-                            <label for="imagen_portada" class="form-label text-white-50">URL de la Portada</label>
-                            <input type="text" class="form-control bg-dark text-light border-secondary" id="imagen_portada" name="imagen_portada" value="<%= juego.imagen_portada %>" required>
+                            <label class="form-label text-white-50">Imagen (URL)</label>
+                            <input type="text"
+                                   id="imgInput"
+                                   class="form-control custom-input"
+                                   name="imagen_portada"
+                                   value="<%= juego.imagen_portada %>"
+                                   required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="precio" class="form-label text-white-50">Precio (USD / COP)</label>
-                            <input type="number" step="0.01" min="0" class="form-control bg-dark text-light border-secondary" id="precio" name="precio" value="<%= juego.precio %>" required>
+                            <label class="form-label text-white-50">Precio</label>
+                            <input type="number"
+                                   step="0.01"
+                                   class="form-control custom-input"
+                                   name="precio"
+                                   value="<%= juego.precio %>"
+                                   required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="descripcion" class="form-label text-white-50">Descripción / Sinopsis</label>
-                            <textarea class="form-control bg-dark text-light border-secondary" id="descripcion" name="descripcion" rows="4" required><%= juego.descripcion %></textarea>
+                            <label class="form-label text-white-50">Descripción</label>
+                            <textarea class="form-control custom-input"
+                                      name="descripcion"
+                                      rows="4"
+                                      required><%= juego.descripcion %></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-warning w-100 btn-lg fw-bold text-dark">Confirmar Actualización</button>
-                    </form>
-                </div>
+                        <button class="btn btn-warning w-100 fw-bold btn-lg save-btn">
+                            Guardar Cambios
+                        </button>
 
-                <div class="card-footer text-center border-secondary py-3" style="background-color: #1b2838;">
-                    <p class="mb-0 text-white-50">Acceso restringido. Solo nivel de autorización <strong>Admin</strong>.</p>
+                    </form>
+
+                </div>
+                <div class="edit-footer text-center">
+                    <span class="text-white-50 small">
+                        Solo administradores pueden modificar juegos
+                    </span>
                 </div>
 
             </div>
+
         </div>
+
     </div>
+
 </div>
 
 <%- include("../partials/footer") %>
 
-<script src="/js/home.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const input = document.getElementById("imgInput");
+    const preview = document.getElementById("previewImg");
+
+    input.addEventListener("input", () => {
+        preview.src = input.value;
+    });
+</script>
 
 </body>
 </html>

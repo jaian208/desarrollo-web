@@ -1,0 +1,84 @@
+/* CONTENEDOR PRINCIPAL */
+.login-box {
+    background: #2b2b2b;
+    border-radius: 12px;
+    max-width: 650px;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    padding: 0; /* importante */
+}
+
+/* HEADER AZUL */
+.login-header {
+    background: linear-gradient(135deg, #1aa3ff, #006bb3);
+    padding: 20px;
+    text-align: center;
+}
+
+.login-header h2 {
+    margin: 0;
+    color: white;
+    font-weight: bold;
+}
+
+/* BODY */
+.login-body {
+    padding: 50px;
+}
+
+.login-body label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.login-body input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #1e1e1e;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.login-body input:focus {
+    outline: none;
+    border-color: #00a8ff;
+}
+
+/* BOTÓN (reutilizando tu clase) */
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background: linear-gradient(135deg, #1aa3ff, #006bb3);
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: linear-gradient(135deg, #33b5ff, #0077cc);
+}
+
+/* FOOTER */
+.login-footer {
+    background: #1b2838;
+    padding: 15px;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.login-footer a {
+    color: #00a8ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}

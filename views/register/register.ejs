@@ -1,55 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<%- include("../partials/head") %>
+<%- include("../partials/head", { title: 'Registro', pageCSS: 'login' }) %>
 
 <body>
 
 <%- include("../partials/navbar") %>
 
-<div class="container mt-5 mb-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
 
-            <div class="card border-0 shadow-lg" style="background-color: #16202d;">
+    <div class="login-box">
 
-                <div class="card-header text-center border-secondary py-3" style="background-color: #1b2838;">
-                    <h2 class="mb-0 fw-bold">Crear una cuenta</h2>
-                </div>
-
-                <div class="card-body p-4">
-
-                    <form action="/register" method="POST">
-
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label text-white-50">Nombre de Spartan</label>
-                            <input type="text" class="form-control bg-dark text-light border-secondary" id="nombre" name="nombre" required placeholder="Ej: MasterChief117">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="email" class="form-label text-white-50">Correo electrónico</label>
-                            <input type="email" class="form-control bg-dark text-light border-secondary" id="email" name="email" required placeholder="tu@correo.com (registrate con admin@gamezone.com para añadir juegos)">
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="password" class="form-label text-white-50">Contraseña segura</label>
-                            <input type="password" class="form-control bg-dark text-light border-secondary" id="password" name="password" required>
-                        </div>
-
-                        <button type="submit" class="btn btn-success w-100 btn-lg fw-bold">Unirse a la base de datos</button>
-                    </form>
-                </div>
-
-                <div class="card-footer text-center border-secondary py-3" style="background-color: #1b2838;">
-                    <p class="mb-0">¿Ya tienes una cuenta? <a href="/login" class="text-primary text-decoration-none fw-bold">Inicia sesión</a></p>
-                </div>
-
-            </div>
+        <div class="login-header">
+            <h2>Crear una cuenta</h2>
         </div>
+
+        <div class="login-body">
+            <form action="/register" method="POST">
+
+                <div class="mb-3">
+                    <label for="nombre">Nombre de Spartan</label>
+                    <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            placeholder="Ej: MasterChief117"
+                            required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Correo electrónico</label>
+                    <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="tu@correo.com"
+                            required>
+
+                </div>
+
+                <div class="mb-4">
+                    <label for="password">Contraseña</label>
+                    <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required>
+                </div>
+
+                <button type="submit" class="btn-login">
+                    Crear cuenta
+                </button>
+
+            </form>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="login-footer">
+            ¿Ya tienes cuenta?
+            <a href="/login">Inicia sesión</a>
+        </div>
+
     </div>
+
 </div>
-
-
 
 <%- include("../partials/footer") %>
 

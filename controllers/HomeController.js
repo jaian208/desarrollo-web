@@ -27,6 +27,7 @@ async function ObtenerCategorias() {
             res.render('home/home', {
                 juegosCarrusel: seleccionarJuegoAleatorio(JuegosDB, 4),
                 juegosRecomendaciones: seleccionarJuegoAleatorio(JuegosDB, 4),
+                recomendacionesparati: seleccionarJuegoAleatorio(JuegosDB, 4),
                 categorias: categoriasJuegos
             });
         } catch (error) {
@@ -47,7 +48,7 @@ async function ObtenerCategorias() {
                 }
             });
 
-            const categoriasJuegos = ObtenerCategorias();
+            const categoriasJuegos = await  ObtenerCategorias();
             res.render('categoria/categoria', {
                 juegos: juegosFiltrados,
                 categorias: categoriasJuegos,

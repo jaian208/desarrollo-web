@@ -1,4 +1,5 @@
 const Juego= require('../models/juego');
+const upload = require('../middleware/upload');
 
 
 exports.MostrarFormularioJuegos= async function (req, res) {
@@ -18,40 +19,48 @@ exports.MostrarFormularioJuegos= async function (req, res) {
     }
 }
 
-exports.AñadirelJuego= async function (req, res) {
-    try{
-        const {nombre, imagen_portada, descripcion, precio, categoria} = req.body;
-        //Verificar si el juego ya existe
+exports.AñadirelJuego = async function (req, res) {
+    try {
 
-        const JuegoExistente= await Juego.findOne(
-            {where: {nombre: nombre}});
+        const { nombre, descripcion, precio, categoria } = req.body;
 
-        if(JuegoExistente){
-           return res.status(400).send('Error, juego ya existente');
-        }
-        //Verificar si el usuario es admin
+        // imagen puede venir por URL o por archivo
+        const imagen = req.file
+            ? '/images/home/' + req.file.filename
+            : req.body.imagen_portada;
 
-        const UserAdmin= req.session.user;
-        if(UserAdmin && UserAdmin.rol === 'admin') {
+        // Verificar si el juego ya existe
+        const JuegoExistente = await Juego.findOne({
+            where: { nombre: nombre }
+        });
 
-            await Juego.create({
-                nombre: nombre,
-                imagen_portada: imagen_portada,
-                descripcion: descripcion,
-                precio: precio,
-                categoria: categoria,
-                createdAt: Date.now(),
-                updatedAt: Date.now(),
-
-            });
-            return res.redirect('/');
+        if (JuegoExistente) {
+            return res.status(400).send('Error, juego ya existente');
         }
 
-    }catch(error){
-        console.log('Usuario no autorizado',error);
-        res.status(400).send('Error Crítico');
+        // Verificar admin
+        const UserAdmin = req.session.user;
+
+        if (!UserAdmin || UserAdmin.rol !== 'admin') {
+            return res.status(403).send('No autorizado');
+        }
+
+        await Juego.create({
+            nombre,
+            imagen_portada: imagen || '/images/default-game.png',
+            descripcion,
+            precio,
+            categoria,
+            userId: UserAdmin.id
+        });
+
+        return res.redirect('/');
+
+    } catch (error) {
+        console.log('Error al crear juego', error);
+        res.status(500).send('Error crítico');
     }
-}
+};
 
 exports.EditarJuego = async function (req, res) {
 

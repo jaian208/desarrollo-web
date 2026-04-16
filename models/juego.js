@@ -23,6 +23,10 @@ const Juego = sequelize.define('Juego', {
     categoria: {
         type: DataTypes.STRING(50),
         allowNull: false,
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 }, {
     tableName: 'juegos',

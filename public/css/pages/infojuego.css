@@ -1,0 +1,51 @@
+/* BANNER */
+.game-banner {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.game-banner img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* OVERLAY */
+.game-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+/* SIDEBAR */
+.game-sidebar {
+    background: #16202d;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* BOTONES */
+.btn-success {
+    transition: 0.3s;
+}
+
+.btn-success:hover {
+    transform: scale(1.03);
+}
+
+/* RECOMENDACIONES */
+.reco-card {
+    background: #1b2838;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.reco-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}

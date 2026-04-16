@@ -1,0 +1,59 @@
+/* Navbar */
+.navbar {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    min-height: 50px;
+}
+
+.navbar-brand img {
+    height: 80px;
+}
+
+.navbar .btn,
+.navbar .form-control {
+    height: 30px;
+    font-size: 0.85rem;
+}
+
+/* Tarjetas de juegos */
+.game-card {
+    background: #555;
+    color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.game-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.nav-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00a8ff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #00a8ff;
+}
+
+/* dropdown oscuro */
+.dropdown-menu {
+    background: #1b2838;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background: #00a8ff;
+    color: white;
+}

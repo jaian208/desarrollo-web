@@ -1,0 +1,67 @@
+body {
+    background: linear-gradient(135deg, #1b2838, #0f1a24);
+}
+
+/* HEADER */
+.perfil-header {
+    background: rgba(27, 40, 56, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* CARDS */
+.perfil-card {
+    background: rgba(43, 43, 43, 0.9);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* AVATAR */
+.perfil-avatar img {
+    width: 90px;
+    height: 90px;
+    border-radius: 12px;
+    border: 2px solid #00a8ff;
+    transition: 0.3s;
+}
+
+.perfil-avatar img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00a8ff;
+}
+
+/* GRID DE JUEGOS */
+.juegos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+/* TARJETA DE JUEGO */
+.juego-item {
+    background: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.juego-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.juego-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.empty-library {
+    padding: 40px 20px;
+    border: 1px dashed rgba(255,255,255,0.2);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+}
