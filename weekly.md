@@ -65,12 +65,22 @@ Gracias a la implementación de estas herramientas, se pudo lograr:
 -Registro y Login de Usuarios.
 -Encriptación de contraseña por motivos de seguridad.
 
-## QUINTA REUNION
+## QUINTA REUNION (Semana 5)
 
 Para facilitar el ingreso de productos al sitio, se acordó implementar un formulario que permita la carga de nuevos juegos. Este formulario estará restringido a un rol con credenciales admin, garantizando así un mejor control y administración del contenido publicado, realizar retoques en la vista del Logout, Inicio de sesión, Verificación de inicio de sesión y la aplicación de un formulario de edición y añadido de juegos que funcionará únicamente bajo la condición de que el rol sea de 'admin'.
 
 Con esta planificación, el equipo queda preparado para iniciar de manera organizada y eficiente.
 
+
+## SEXTA REUNION (Semana 7)
+
+el equipo se enfocó en la integración completa de todas las funcionalidades desarrolladas, así como en la corrección de errores detectados durante las pruebas Se priorizó la estabilidad del sistema, la optimización del flujo del usuario y los últimos ajustes visuales del sitio web.
+
+Durante esta reunión, se discutieron y ejecutaron las siguientes acciones:
+Corrección de errores relacionados con sesiones de usuario y el carrito de compras.
+Validación completo del sistema.
+Ajustes en la interfaz para mejorar la experiencia del usuario.
+Pruebas generales del sistema para detectar fallos y mejorar el rendimiento.
 
 
 
