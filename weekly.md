@@ -72,7 +72,7 @@ Para facilitar el ingreso de productos al sitio, se acordó implementar un formu
 Con esta planificación, el equipo queda preparado para iniciar de manera organizada y eficiente.
 
 
-## SEXTA REUNION (Semana 7)
+## SEXTA REUNION (Semana 6)
 
 el equipo se enfocó en la integración completa de todas las funcionalidades desarrolladas, así como en la corrección de errores detectados durante las pruebas Se priorizó la estabilidad del sistema, la optimización del flujo del usuario y los últimos ajustes visuales del sitio web.
 
@@ -83,4 +83,7 @@ Ajustes en la interfaz para mejorar la experiencia del usuario.
 Pruebas generales del sistema para detectar fallos y mejorar el rendimiento.
 
 
+## SEPTIMA REUNION (Semana 7)
+
+En esta reunión el equipo se enfocó en la integración y mejora de las funcionalidades relacionadas con el perfil de usuario  para implementar la opción de subir imágenes como avatar y crear una nueva vista que permita editar el nombre, correo y avatar del usuario, también se añadir validaciones en los formularios de registro, edición de perfil y creación de juegos para asegurar la correcta introducción de datos  y realizar ajustes en la estructura del proyecto, reorganizar la ubicación de las imágenes de portada para mejorar la organización de los recursos estáticos.
 
