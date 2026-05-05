@@ -116,3 +116,19 @@ algunos problemas pequeños con el carrrito de compras para del usuario.
 
 Agregar mejoras visuales finales para lograr una interfaz más atractiva y profesional.
 corregir el error que hay en la base de datos relacionada a carrito de compras.
+
+## Retrospectiva Sprint 5:
+se  implemento la funicon para poder subir iamgenes como avatar para el usuario tambien se implemento una nueva vista donde el usuario puede modificar su nombre correo y avatar, incorporando tambien funciones de validator para los formularios donde el usuario debe rellenar para editar añadir un juego o su perfil y sw modifico la dirrecion de las portadas de public/home a public/home/portada
+
+## Aspectos positivos:
+
+se logro implementar las funciones del sprint consiguiendo que sea mas intuitivo para el usuario
+se corrigieron errores que habian en la logica del proyecto
+
+## Aspectos a mejorar:
+
+hubo problemas en el nombre de las varibles para la portada y el avatar complicando la incorporacion del avatar
+
+## Plan de mejora para el siguiente sprint
+
+mejorar el nombramiento de las varibles  para no tener problemas a futuro
