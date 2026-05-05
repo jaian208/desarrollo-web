@@ -18,6 +18,15 @@
 
         <!-- BODY -->
         <div class="login-body">
+            <% if (errores && errores.length > 0) { %>
+                <div class="alert alert-danger">
+                    <ul>
+                        <% errores.forEach(error => { %>
+                            <li><%= error.msg %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            <% } %>
             <form action="/login" method="POST">
 
                 <div class="mb-3">
@@ -26,8 +35,8 @@
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="tu@correo.com"
-                            required>
+                            value="<%= datos ? datos.email : '' %>"
+                            placeholder="tu@correo.com">
                 </div>
 
                 <div class="mb-4">
@@ -35,8 +44,7 @@
                     <input
                             type="password"
                             id="password"
-                            name="password"
-                            required>
+                            name="password">
                 </div>
 
                 <button type="submit" class="btn-login">

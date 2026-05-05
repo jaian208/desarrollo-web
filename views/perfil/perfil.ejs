@@ -10,25 +10,35 @@
 <div class="container mt-5">
 
     <!-- HEADER PERFIL -->
-    <div class="perfil-header p-4 mb-4 rounded">
-        <div class="d-flex align-items-center gap-4">
+    <<div class="perfil-header p-4 mb-4 rounded">
 
-            <!-- Avatar -->
-            <div class="perfil-avatar">
-                <img src="<%= user.avatar || '/images/default-avatar.png' %>" alt="avatar">
-            </div>
+        <div class="d-flex justify-content-between align-items-center">
 
-            <!-- Info -->
-            <div>
-                <h2 class="mb-1"> <%= user.nombre %> </h2>
-                <p class="mb-1 text-white-50"><%= user.email %></p>
+            <div class="d-flex align-items-center gap-4">
 
-                <span class="badge-rol <%= user.rol %>">
+                <div class="perfil-avatar">
+                    <img src="<%= user.avatar %>" alt="avatar">
+                </div>
+
+                <div>
+                    <h2 class="mb-1"><%= user.nombre %></h2>
+                    <p class="mb-1 text-white-50"><%= user.email %></p>
+
+                    <span class="badge-rol <%= user.rol %>">
                     <%= user.rol %>
                 </span>
+                </div>
+
+            </div>
+
+            <div>
+                <a href="/perfil/editar" class="btn btn-outline-warning fw-bold">
+                    Editar perfil
+                </a>
             </div>
 
         </div>
+
     </div>
 
     <!-- CONTENIDO -->

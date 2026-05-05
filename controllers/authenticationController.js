@@ -2,17 +2,29 @@ const User = require('../models/user');
 const bcrypt = require("bcrypt");
 const Juego = require('../models/juego');
 const {promisify} = require("util");
+const { validationResult } = require('express-validator');
 
 
 //Renderizar el login
 exports.mostrarLogin = async (req, res) => {
-    res.render('login/login');
+    res.render('login/login', {
+        errores: [],
+        datos: {}
+    });
 }
-
 
 
 exports.AutenticarLogin = async (req, res) => {
     try {
+
+        const errores = validationResult(req);
+
+        if (!errores.isEmpty()) {
+            return res.render('login/login', {
+                errores: errores.array(),
+                datos: req.body
+            });
+        }
         //Verificar que el usuario realmente existe en nuestra base de Datos
         const {email, password} = req.body;
         const UsuarioDB = await User.findOne(
@@ -20,14 +32,20 @@ exports.AutenticarLogin = async (req, res) => {
                 where: {email: email}
             });
         if (!UsuarioDB) {
-            return res.status(401).send('Acceso Denegado');
+            return res.render('login/login', {
+                errores: [{ msg: 'spartan no encontrado' }],
+                datos: req.body
+            });
         }
 
         //Comparar la contraseña que el usuario envía en el fórmulario y la contraseña en la base de datos
         const passwordCorrecta = await bcrypt.compare(password, UsuarioDB.password);
 
         if (!passwordCorrecta) {
-            return res.status(401).send('Contraseña incorrecta, intente nuevamente');
+            return res.render('login/login', {
+                errores: [{ msg: 'Correo o contraseña incorrecta' }],
+                datos: req.body
+            });
         }
 
         //Utilizamos los datos para crear la sesion
@@ -38,6 +56,7 @@ exports.AutenticarLogin = async (req, res) => {
             nombre: UsuarioDB.nombre,
             rol: UsuarioDB.rol,
             estado_cuenta: UsuarioDB.estado_cuenta,
+            avatar: UsuarioDB.avatar,
         };
         //Guardamos los datos para evitar que redirect se los salte.
 
@@ -55,7 +74,6 @@ exports.AutenticarLogin = async (req, res) => {
         return res.status(500).send('Error crítico');
     }
 }
-
 
 
 //Renderizar el perfil usando los atributos de sesion
@@ -84,11 +102,6 @@ exports.mostrarPerfil = async (req, res) => {
         console.log(error);
     }
 };
-
-
-
-
-
 
     //Cerrar sesión (Logout)
 

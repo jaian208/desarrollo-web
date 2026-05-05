@@ -1,13 +1,24 @@
 const Juego= require('../models/juego');
-const upload = require('../middleware/upload');
+const { validationResult } = require('express-validator');
 
 
 exports.MostrarFormularioJuegos= async function (req, res) {
     try {
+        const categorias = [
+            'Acción',
+            'Aventura',
+            'cooperativo',
+            'Deportes',
+            'Terror'
+        ];
         //Verificar si el usuario es admin
         const UserAdmin1 = req.session.user;
         if (UserAdmin1 && UserAdmin1.rol === 'admin') {
-            res.render('formularioJuego/formularioJuego');
+            res.render('formularioJuego/formularioJuego', {
+                errores: [],
+                datos: {},
+                categorias
+            });
         }else if(UserAdmin1 && UserAdmin1.rol === 'cliente') {
             res.redirect('/');
         }else{
@@ -20,38 +31,60 @@ exports.MostrarFormularioJuegos= async function (req, res) {
 }
 
 exports.AñadirelJuego = async function (req, res) {
+
     try {
+        const user = req.session.user;
 
-        const { nombre, descripcion, precio, categoria } = req.body;
-
-        // imagen puede venir por URL o por archivo
-        const imagen = req.file
-            ? '/images/home/' + req.file.filename
-            : req.body.imagen_portada;
-
-        // Verificar si el juego ya existe
-        const JuegoExistente = await Juego.findOne({
-            where: { nombre: nombre }
-        });
-
-        if (JuegoExistente) {
-            return res.status(400).send('Error, juego ya existente');
-        }
-
-        // Verificar admin
-        const UserAdmin = req.session.user;
-
-        if (!UserAdmin || UserAdmin.rol !== 'admin') {
+        if (!user || user.rol !== 'admin') {
             return res.status(403).send('No autorizado');
         }
 
+        const errores = validationResult(req);
+        let erroresArray = errores.array();
+
+        if (req.fileValidationError) {
+            erroresArray.push({ msg: req.fileValidationError });
+        }
+
+        if (!req.file && (!req.body.imagen_url || req.body.imagen_url.trim() === '')) {
+            erroresArray.push({ msg: 'Debe subir una imagen o URL' });
+        }
+
+        const { nombre, descripcion, precio, categoria } = req.body;
+
+        const juegoExistente = await Juego.findOne({
+            where: {
+                nombre: nombre.trim()
+            }
+        });
+
+        if (juegoExistente) {
+            erroresArray.push({ msg: 'El juego ya existe' });
+        }
+
+        if (erroresArray.length > 0) {
+            return res.render('formularioJuego/formularioJuego', {
+                errores: erroresArray,
+                datos: req.body
+            });
+        }
+
+        let imagen = '/images/home/portada/default-game.png';
+
+        if (req.file) {
+            imagen = '/images/home/portada/' + req.file.filename;
+        }
+        else if (req.body.imagen_url && req.body.imagen_url.trim() !== '') {
+            imagen = req.body.imagen_url;
+        }
+
         await Juego.create({
-            nombre,
-            imagen_portada: imagen || '/images/default-game.png',
+            nombre: nombre.trim(),
+            imagen_portada: imagen,
             descripcion,
             precio,
             categoria,
-            userId: UserAdmin.id
+            userId: user.id
         });
 
         return res.redirect('/');
@@ -61,7 +94,3 @@ exports.AñadirelJuego = async function (req, res) {
         res.status(500).send('Error crítico');
     }
 };
-
-exports.EditarJuego = async function (req, res) {
-
-}

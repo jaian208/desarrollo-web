@@ -3,7 +3,17 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/images/home');
+
+        if (file.fieldname === 'avatar') {
+            cb(null, 'public/images/home/avatars');
+        }
+        else if (file.fieldname === 'imagen_portada') {
+            cb(null, 'public/images/home/portada');
+        }
+        else {
+            cb(null, 'public/images/home');
+        }
+
     },
 
     filename: (req, file, cb) => {
@@ -16,7 +26,8 @@ const fileFilter = (req, file, cb) => {
     if (file.mimetype.startsWith('image/')) {
         cb(null, true);
     } else {
-        cb(new Error('Solo imágenes permitidas'), false);
+        req.fileValidationError = 'Solo imágenes';
+        cb(null, false);
     }
 };
 

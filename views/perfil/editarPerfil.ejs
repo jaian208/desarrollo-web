@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head', { title: 'Editar Perfil', pageCSS: 'perfil' }) %>
+
+<body class="bg-dark text-light">
+
+<%- include('../partials/navbar') %>
+
+<div class="container mt-5 pt-4 mb-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-8">
+
+            <div class="edit-card shadow-lg">
+
+                <div class="edit-header text-center">
+                    <h2 class="fw-bold mb-1">Editar Perfil</h2>
+                    <p class="text-white-50 small m-0">
+                        Actualiza tu información personal
+                    </p>
+                </div>
+
+                <div class="p-4">
+
+                    <div class="text-center mb-4">
+                        <img src="<%= usuario.avatar %>"
+                             id="previewImg"
+                             class="rounded-circle"
+                             style="width:120px; height:120px; object-fit:cover;">
+                    </div>
+                    <% if (errores && errores.length > 0) { %>
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                <% errores.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    <% } %>
+
+                    <form action="/perfil/editar"
+                          method="POST"
+                          enctype="multipart/form-data">
+
+                        <div class="mb-3">
+                            <label class="form-label text-white-50">
+                                Nombre
+                            </label>
+                            <input type="text"
+                                   name="nombre"
+                                   class="form-control custom-input"
+                                   value="<%= usuario.nombre %>">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-white-50">
+                                Correo electrónico
+                            </label>
+                            <input type="email"
+                                   name="email"
+                                   class="form-control custom-input"
+                                   value="<%= usuario.email %>">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-white-50">
+                                Cambiar avatar
+                            </label>
+                            <input type="file"
+                                   name="avatar"
+                                   id="fileInput"
+                                   class="form-control custom-input">
+                        </div>
+
+                        <div class="d-flex gap-2">
+
+                            <button type="submit"
+                                    class="btn btn-success w-100 fw-bold">
+                                Guardar cambios
+                            </button>
+
+                            <a href="/perfil"
+                               class="btn btn-outline-light w-100">
+                                Cancelar
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="edit-footer text-center">
+                    <span class="text-white-50 small">
+                        Mantén tu información actualizada
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include('../partials/footer') %>
+
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const input = document.getElementById("fileInput");
+    const preview = document.getElementById("previewImg");
+
+    input.addEventListener("change", () => {
+        const file = input.files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            preview.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    });
+</script>
+
+</body>
+</html>

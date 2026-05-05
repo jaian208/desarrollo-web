@@ -17,15 +17,23 @@
 
         <div class="login-body">
             <form action="/register" method="POST">
-
+                <% if (errores && errores.length > 0) { %>
+                    <div class="alert alert-danger">
+                        <ul>
+                            <% errores.forEach(error => { %>
+                                <li><%= error.msg %></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                <% } %>
                 <div class="mb-3">
                     <label for="nombre">Nombre de Spartan</label>
                     <input
                             type="text"
                             id="nombre"
                             name="nombre"
-                            placeholder="Ej: MasterChief117"
-                            required>
+                            value="<%=datos ? datos.nombre : ''%>"
+                            placeholder="Ej: MasterChief117">
                 </div>
 
                 <div class="mb-3">
@@ -34,8 +42,8 @@
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="tu@correo.com"
-                            required>
+                            value="<%= datos ? datos.email : '' %>"
+                            placeholder="tu@correo.com">
 
                 </div>
 
@@ -44,14 +52,20 @@
                     <input
                             type="password"
                             id="password"
-                            name="password"
-                            required>
+                            name="password">
+                </div>
+
+                <div class="mb-4">
+                    <label for="confirmPassword">Confirmar contraseña</label>
+                    <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword">
                 </div>
 
                 <button type="submit" class="btn-login">
                     Crear cuenta
                 </button>
-
             </form>
         </div>
 

@@ -101,6 +101,8 @@ const carritoRoutes= require("./router/carritoRouter");
 
 const juegoEdicionRoutes= require("./router/juegoEdicionRouter");
 
+const perfilEditarRouter = require('./router/perfileditarRouter');
+
 const path = require("node:path");
 
 app.use("/", juegoFormularioRoutes);
@@ -116,6 +118,8 @@ app.use("/", userRoutes);
 app.use("/", carritoRoutes);
 
 app.use("/", juegoEdicionRoutes);
+
+app.use('/', perfilEditarRouter);
 
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -21,12 +21,20 @@
 
                 <div class="p-4">
                     <div class="preview-box mb-4 text-center">
-                        <img src="<%= juego.imagen_portada %>"
-                             id="previewImg"
-                             class="preview-img">
+                        <img id="previewImg"
+                             src="<%= datos.imagen_portada ? datos.imagen_portada : juego.imagen_portada %>"
+                             class="img-fluid">
                     </div>
-
-                    <form action="/edicion/<%= juego.id %>" method="POST">
+                    <% if (errores && errores.length > 0) { %>
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                <% errores.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    <% } %>
+                    <form action="/edicion/<%= juego.id %>" method="POST" enctype="multipart/form-data">
 
                         <div class="row">
 
@@ -35,29 +43,53 @@
                                 <input type="text"
                                        class="form-control custom-input"
                                        name="nombre"
-                                       value="<%= juego.nombre %>"
-                                       required>
+                                       value="<%= datos.nombre ? datos.nombre : juego.nombre %>">
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label class="form-label text-white-50">Categoría</label>
-                                <input type="text"
-                                       class="form-control custom-input"
-                                       name="categoria"
-                                       value="<%= juego.categoria %>"
-                                       required>
+
+                                <label class="form-label text-white-50">
+                                    Categoría / Consola
+                                </label>
+
+                                <select class="form-control custom-input"
+                                        name="categoria"
+                                        id="categoria">
+
+                                    <option value="">-- Selecciona categoría --</option>
+
+                                    <% categorias.forEach(cat => { %>
+
+                                        <option value="<%= cat %>"
+                                                <%= (datos.categoria || juego.categoria) === cat ? 'selected' : '' %>>
+                                            <%= cat %>
+                                        </option>
+
+                                    <% }) %>
+
+                                </select>
+
                             </div>
 
                         </div>
 
+
                         <div class="mb-3">
+
                             <label class="form-label text-white-50">Imagen (URL)</label>
                             <input type="text"
                                    id="imgInput"
                                    class="form-control custom-input"
                                    name="imagen_portada"
-                                   value="<%= juego.imagen_portada %>"
-                                   required>
+                                   value="<%= datos.imagen_portada ? datos.imagen_portada : juego.imagen_portada %>">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white-50">Subir imagen</label>
+                            <input type="file"
+                                   name="imagen_portada"
+                                   id="fileInput"
+                                   class="form-control custom-input"
+                                   accept="image/*">
                         </div>
 
                         <div class="mb-3">
@@ -66,20 +98,25 @@
                                    step="0.01"
                                    class="form-control custom-input"
                                    name="precio"
-                                   value="<%= juego.precio %>"
-                                   required>
+                                   value="<%= datos.precio ? datos.precio : juego.precio %>">
                         </div>
 
                         <div class="mb-4">
                             <label class="form-label text-white-50">Descripción</label>
                             <textarea class="form-control custom-input"
                                       name="descripcion"
-                                      rows="4"
-                                      required><%= juego.descripcion %></textarea>
+                                      rows="4"><%= datos.descripcion ? datos.descripcion : juego.descripcion %>
+                            </textarea>
                         </div>
 
                         <button class="btn btn-warning w-100 fw-bold btn-lg save-btn">
                             Guardar Cambios
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-outline-light w-100 mt-2"
+                                onclick="history.back()">
+                            Cancelar
                         </button>
 
                     </form>
@@ -87,7 +124,7 @@
                 </div>
                 <div class="edit-footer text-center">
                     <span class="text-white-50 small">
-                        Solo administradores pueden modificar juegos
+                        Solo el creador o un administrador pueden modificar este juego
                     </span>
                 </div>
 
@@ -104,11 +141,23 @@
 <script src="/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const input = document.getElementById("imgInput");
+    const fileInput = document.getElementById("fileInput");
+    const urlInput = document.getElementById("imgInput");
     const preview = document.getElementById("previewImg");
 
-    input.addEventListener("input", () => {
-        preview.src = input.value;
+    // Preview desde archivo
+    fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = e => preview.src = e.target.result;
+        reader.readAsDataURL(file);
+    });
+
+    // Preview desde URL
+    urlInput.addEventListener("input", () => {
+        preview.src = urlInput.value;
     });
 </script>
 

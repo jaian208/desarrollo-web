@@ -23,10 +23,19 @@
                 <!-- BODY -->
                 <div class="p-4">
                     <div class="preview-box mb-4 text-center">
-                        <img src="/images/default-game.png"
+                        <img src="<%= datos && datos.imagen_portada ? datos.imagen_portada : '/images/home/portada/default-game.png' %>"
                              id="previewImg"
                              class="preview-img">
                     </div>
+                    <% if (errores && errores.length > 0) { %>
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                <% errores.forEach(error => { %>
+                                    <li><%= error.msg %></li>
+                                <% }) %>
+                            </ul>
+                        </div>
+                    <% } %>
                     <form action="/formulario"
                           method="POST"
                           enctype="multipart/form-data">
@@ -40,22 +49,34 @@
                                        class="form-control custom-input"
                                        id="nombre"
                                        name="nombre"
-                                       required
+                                       value="<%= datos ? datos.nombre : '' %>"
                                        placeholder="Ej: Dead Space / Halo 3">
                             </div>
 
                             <div class="col-md-6 mb-3">
+
                                 <label for="categoria" class="form-label text-white-50">
-                                    Categoría / Consola
+                                    Categoría
                                 </label>
-                                <input type="text"
-                                       class="form-control custom-input"
-                                       id="categoria"
-                                       name="categoria"
-                                       required
-                                       placeholder="Ej: Survival Horror, Xbox, PC">
+
+                                <select class="form-control custom-input"
+                                        id="categoria"
+                                        name="categoria">
+
+                                    <option value="">-- Selecciona categoría --</option>
+
+                                    <% categorias.forEach(cat => { %>
+
+                                        <option value="<%= cat %>"
+                                                <%= (datos.categoria === cat) ? 'selected' : '' %>>
+                                            <%= cat %>
+                                        </option>
+
+                                    <% }) %>
+
+                                </select>
+
                             </div>
-                        </div>
 
                         <div class="mb-3">
                             <label class="form-label text-white-50">
@@ -66,12 +87,12 @@
                             <input type="url"
                                    id="imgInput"
                                    class="form-control custom-input mb-2"
-                                   name="imagen_portada"
+                                   name="imagen_url"
                                    placeholder="Pegar URL de imagen">
 
                             <!-- OPCIÓN 2: ARCHIVO -->
                             <input type="file"
-                                   name="imagen"
+                                   name="imagen_portada"
                                    class="form-control custom-input">
                         </div>
 
@@ -85,7 +106,7 @@
                                    class="form-control custom-input"
                                    id="precio"
                                    name="precio"
-                                   required
+                                   value="<%= datos ? datos.precio : '' %>"
                                    placeholder="Ej: 59.99">
                         </div>
 
@@ -97,13 +118,17 @@
                                       id="descripcion"
                                       name="descripcion"
                                       rows="4"
-                                      required
-                                      placeholder="Ingresa los detalles épicos de la campaña..."></textarea>
+                                      placeholder="Ingresa los detalles épicos de la campaña..."><%= datos ? datos.descripcion : '' %></textarea>
                         </div>
 
                         <button type="submit"
                                 class="btn btn-success w-100 btn-lg fw-bold">
                             Desplegar en el Catálogo
+                        </button>
+                        <button type="button"
+                                class="btn btn-outline-light w-100 mt-2"
+                                onclick="history.back()">
+                            Cancelar
                         </button>
 
                     </form>
@@ -128,26 +153,30 @@
 <script src="/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const fileInput = document.querySelector('input[name="imagen"]');
+    const fileInput = document.querySelector('input[name="imagen_portada"]');
     const urlInput = document.getElementById("imgInput");
     const preview = document.getElementById("previewImg");
     fileInput.addEventListener("change", (e) => {
         const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
 
-            reader.onload = function (event) {
-                preview.src = event.target.result;
-            };
+        if (!file) return;
 
-            reader.readAsDataURL(file);
+        if (!file.type.startsWith("image/")) {
+            alert("Archivo no válido");
+            fileInput.value = "";
+            return;
         }
+
+        const reader = new FileReader();
+        reader.onload = event => preview.src = event.target.result;
+        reader.readAsDataURL(file);
     });
+
     urlInput.addEventListener("input", () => {
         if (urlInput.value.trim() !== "") {
             preview.src = urlInput.value;
         } else {
-            preview.src = "/images/default-game.png";
+            preview.src = "/images/home/portada/default-game.png";
         }
     });
 </script>
