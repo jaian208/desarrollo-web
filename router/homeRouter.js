@@ -9,4 +9,6 @@ router.get('/categoria/:nombreCategoria', homeController.categoria);
 
 router.get('/', homeController.home);
 
+router.get('/buscar', homeController.buscarJuego);
+
 module.exports = router;

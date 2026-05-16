@@ -87,3 +87,8 @@ Pruebas generales del sistema para detectar fallos y mejorar el rendimiento.
 
 En esta reunión el equipo se enfocó en la integración y mejora de las funcionalidades relacionadas con el perfil de usuario  para implementar la opción de subir imágenes como avatar y crear una nueva vista que permita editar el nombre, correo y avatar del usuario, también se añadir validaciones en los formularios de registro, edición de perfil y creación de juegos para asegurar la correcta introducción de datos  y realizar ajustes en la estructura del proyecto, reorganizar la ubicación de las imágenes de portada para mejorar la organización de los recursos estáticos.
 
+## OCTAVA REUNION (Semana 8)
+En esta reunión el equipo se enfocó en mejorar la experiencia visual y funcional del sistema GameZone,
+especialmente en las áreas relacionadas con la búsqueda de juegos, edición de contenido y optimización 
+de formularios administrativos. Además, se realizaron mejoras importantes en la organización visual
+de las vistas y en la interacción del usuario con la plataforma.
