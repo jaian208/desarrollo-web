@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<%- include('../partials/head', { title: 'Resultados', pageCSS: 'buscar' }) %>
+
+<body class="bg-dark text-light">
+
+<%- include('../partials/navbar') %>
+
+<div class="container py-5 mt-5">
+
+    <div class="search-header text-center mb-5">
+
+        <h1 class="fw-bold display-5">
+            Resultados de búsqueda
+        </h1>
+
+        <p class="text-white-50 fs-5">
+            <span class="text-warning">
+                "<%= search %>"
+            </span>
+        </p>
+
+        <div class="search-line mx-auto"></div>
+
+    </div>
+
+    <% if (juegos.length > 0) { %>
+
+        <div class="row g-4">
+
+            <% juegos.forEach(juego => { %>
+
+                <div class="col-xl-3 col-lg-4 col-md-6">
+
+                    <div class="game-card h-100">
+
+                        <div class="game-img-container">
+
+                            <img src="<%= juego.imagen_portada %>"
+                                 class="game-img">
+
+                        </div>
+
+                        <div class="p-3">
+
+                            <span class="badge bg-warning text-dark mb-2">
+                                <%= juego.categoria %>
+                            </span>
+
+                            <h5 class="fw-bold text-truncate">
+                                <%= juego.nombre %>
+                            </h5>
+
+                            <p class="text-success fw-bold fs-5">
+                                $ <%= juego.precio %>
+                            </p>
+
+                            <a href="/comprar/<%= juego.id %>"
+                               class="btn btn-warning w-100 fw-bold">
+                                Ver Juego
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            <% }) %>
+
+        </div>
+
+    <% } else { %>
+
+        <div class="empty-search text-center py-5">
+
+            <img src="/images/home/no-results.png"
+                 class="mb-4"
+                 width="180">
+
+            <h2 class="fw-bold">
+                No encontramos resultados
+            </h2>
+
+            <p class="text-white-50 fs-5">
+                Intenta con otro nombre o explora el catálogo
+            </p>
+
+            <a href="/"
+               class="btn btn-outline-warning btn-lg mt-3">
+                Volver a la tienda
+            </a>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+<%- include('../partials/footer') %>
+
+</body>
+</html>

@@ -97,7 +97,9 @@ Optimizar la organización del código para facilitar su mantenimiento.
 
 ## Retrospectiva Sprint 4:
 
-Durante el Sprint 4, el equipo se enfocó en la integración final de funcionalidades clave del sistema, mejoras en la experiencia del usuario y corrección de errores detectados en los sprints anteriores se trabajó especialmente en la estabilidad del sistema, validaciones y detalles visuales del sitio web.
+Durante el Sprint 4, el equipo se enfocó en la integración final de funcionalidades clave del sistema, 
+mejoras en la experiencia del usuario y corrección de errores detectados en los sprints anteriores 
+se trabajó especialmente en la estabilidad del sistema, validaciones y detalles visuales del sitio web.
 
 ## Aspectos positivos:
 
@@ -118,7 +120,10 @@ Agregar mejoras visuales finales para lograr una interfaz más atractiva y profe
 corregir el error que hay en la base de datos relacionada a carrito de compras.
 
 ## Retrospectiva Sprint 5:
-se  implemento la funicon para poder subir iamgenes como avatar para el usuario tambien se implemento una nueva vista donde el usuario puede modificar su nombre correo y avatar, incorporando tambien funciones de validator para los formularios donde el usuario debe rellenar para editar añadir un juego o su perfil y sw modifico la dirrecion de las portadas de public/home a public/home/portada
+se implemento la funicon para poder subir iamgenes como avatar para el usuario tambien se 
+implemento una nueva vista donde el usuario puede modificar su nombre correo y avatar, incorporando 
+tambien funciones de validator para los formularios donde el usuario debe rellenar para editar añadir 
+un juego o su perfil y sw modifico la dirrecion de las portadas de public/home a public/home/portada
 
 ## Aspectos positivos:
 
@@ -131,4 +136,26 @@ hubo problemas en el nombre de las varibles para la portada y el avatar complica
 
 ## Plan de mejora para el siguiente sprint
 
-mejorar el nombramiento de las varibles  para no tener problemas a futuro
+Mejorar el nombramiento de las varibles para no tener problemas a futuro.
+
+
+## Retrospectiva Sprint 6:
+
+Durante este sprint se trabajó principalmente en la mejora de la experiencia de usuario 
+y en la expansión de funcionalidades administrativas, se buscó optimizar la gestión de juegos, 
+perfiles y navegación general de la plataforma, además de mejorar el diseño visual 
+de las vistas del sistema.
+
+## Aspectos positivos:
+
+Se implementó un buscador funcional conectado a Sequelize y MySQL.
+
+## Aspectos a mejorar:
+
+Implementar búsqueda inteligente o aproximada (fuzzy search), añadir filtros
+
+## Plan de mejora para el siguiente sprint
+
+Continuar fortaleciendo la experiencia de usuario y 
+la arquitectura de GameZone mediante mejoras visuales,
+optimización de funcionalidades existentes

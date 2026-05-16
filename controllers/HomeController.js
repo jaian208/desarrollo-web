@@ -1,4 +1,5 @@
 const Juego = require('../models/juego');
+const { Op } = require('sequelize');
 
 function seleccionarJuegoAleatorio(array, cantidad){
     return [...array].sort(() => 0.5 - Math.random()).slice(0, cantidad);  //Sort es un metodo de ordenamiento que funciona con bucles, simplemente ordena aleatoriamente y corta en la cantidad de juegos a mostrar
@@ -60,3 +61,25 @@ async function ObtenerCategorias() {
         }
 
     }
+
+exports.buscarJuego = async (req, res) => {
+
+    try {
+        const search = req.query.search || '';
+        const juegos = await Juego.findAll({
+            where: {
+                nombre: {
+                    [Op.like]: `%${search}%`
+                }
+            }
+        });
+
+        res.render('buscar/resultados', {
+            juegos,
+            search
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error al buscar');
+    }
+};

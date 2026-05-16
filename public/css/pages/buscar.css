@@ -1,0 +1,55 @@
+body {
+    background: #0f0f0f;
+}
+
+/* HEADER */
+
+.search-header h1 {
+    color: white;
+}
+
+.search-line {
+    width: 120px;
+    height: 4px;
+    background: #ffc107;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+/* CARD */
+
+.game-card {
+    background: #1b1b1b;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.game-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(255,193,7,0.25);
+}
+
+/* IMAGEN */
+
+.game-img-container {
+    overflow: hidden;
+}
+
+.game-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    transition: 0.4s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.08);
+}
+
+/* EMPTY */
+
+.empty-search img {
+    opacity: 0.9;
+}
