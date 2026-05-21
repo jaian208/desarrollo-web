@@ -33,6 +33,13 @@ exports.MostrarFormularioJuegos= async function (req, res) {
 exports.AñadirelJuego = async function (req, res) {
 
     try {
+        const categorias = [
+            'Acción',
+            'Aventura',
+            'cooperativo',
+            'Deportes',
+            'Terror'
+        ];
         const user = req.session.user;
 
         if (!user || user.rol !== 'admin') {
@@ -65,7 +72,8 @@ exports.AñadirelJuego = async function (req, res) {
         if (erroresArray.length > 0) {
             return res.render('formularioJuego/formularioJuego', {
                 errores: erroresArray,
-                datos: req.body
+                datos: req.body,
+                categorias
             });
         }
 

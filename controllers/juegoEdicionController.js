@@ -41,6 +41,13 @@ exports.MostrarFormularioEdicion = async (req, res) => {
 
 exports.EditarJuego = async (req, res) => {
     try {
+        const categorias = [
+            'Acción',
+            'Aventura',
+            'cooperativo',
+            'Deportes',
+            'Terror'
+        ];
         const user = req.session.user;
         if (!user) return res.status(403).send('No autorizado');
 
@@ -66,7 +73,8 @@ exports.EditarJuego = async (req, res) => {
             return res.render('formularioEdicion/formularioEdicion', {
                 errores: erroresArray,
                 datos: req.body,
-                juego
+                juego,
+                categorias
             });
         }
 

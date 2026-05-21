@@ -16,9 +16,9 @@
         </div>
 
         <div class="login-body">
-            <form action="/register" method="POST">
+            <form id="registerForm" action="/register" method="POST">
                 <% if (errores && errores.length > 0) { %>
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger d-none">
                         <ul>
                             <% errores.forEach(error => { %>
                                 <li><%= error.msg %></li>
@@ -26,6 +26,7 @@
                         </ul>
                     </div>
                 <% } %>
+                    <ul class="errores alert alert-danger d-none"></ul>
                 <div class="mb-3">
                     <label for="nombre">Nombre de Spartan</label>
                     <input
@@ -81,7 +82,7 @@
 
 <%- include("../partials/footer") %>
 
-<script src="/js/home.js"></script>
+<script src="/js/registerValidations.js"></script>
 
 </body>
 </html>
