@@ -77,7 +77,7 @@ Continuar con la mejora del diseño visual del sitio web.
 
 Se implementó un sistema para el ingreso de nuevos juegos mediante un formulario, el cual está restringido a un rol específico de usuario, mejorando así el control y la administración del contenido. Los cambios presentan las funcionalidades esperadas y responden adecuadamente. Aunque se presentaron bastantes inconvenientes durante el proceso de implementación de los formularios debido a que se necesitaba la verificación del rol del usuario, pero afortunadamente, se logró ajustar los parámetros dinámicos para la experiencia del usuario y la experiencia del administrador.
 
-## Aspectos positivos:
+- Aspectos positivos:
 
 Se logró una mejor organización general del proyecto.
 
@@ -85,10 +85,10 @@ Se implementó correctamente el formulario para la carga de productos.
 
 Se aplicó control de acceso por roles para restringir funcionalidades.
 
-## Aspectos a mejorar:
+- Aspectos a mejorar:
 Algunos problemas en la integración de funcionalidades entre diferentes partes del sistema.
 
-Plan de mejora para el siguiente sprint
+- Plan de mejora para el siguiente sprint
 
 
 Mejorar la integración entre módulos del sistema.
@@ -101,20 +101,20 @@ Durante el Sprint 4, el equipo se enfocó en la integración final de funcionali
 mejoras en la experiencia del usuario y corrección de errores detectados en los sprints anteriores 
 se trabajó especialmente en la estabilidad del sistema, validaciones y detalles visuales del sitio web.
 
-## Aspectos positivos:
+- Aspectos positivos:
 
 Se logró una mejor integración entre los diferentes módulos del sistema.
 Se corrigieron varios errores relacionados con sesiones y validaciones de usuario.
 Se mejoró la experiencia del usuario mediante ajustes en la interfaz y navegación del sitio.
 Se fortaleció el control de acceso, asegurando que cada rol tenga permisos adecuados.
 
-## Aspectos a mejorar:
+- Aspectos a mejorar:
 
 Falta mejorar la validación de formularios en el lado del cliente.
 Algunas partes del código aún pueden optimizarse para mayor claridad y mantenimiento.
 algunos problemas pequeños con el carrrito de compras para del usuario.
 
-## Plan de mejora para el siguiente sprint
+- Plan de mejora para el siguiente sprint
 
 Agregar mejoras visuales finales para lograr una interfaz más atractiva y profesional.
 corregir el error que hay en la base de datos relacionada a carrito de compras.
@@ -125,16 +125,16 @@ implemento una nueva vista donde el usuario puede modificar su nombre correo y a
 tambien funciones de validator para los formularios donde el usuario debe rellenar para editar añadir 
 un juego o su perfil y sw modifico la dirrecion de las portadas de public/home a public/home/portada
 
-## Aspectos positivos:
+- Aspectos positivos:
 
 se logro implementar las funciones del sprint consiguiendo que sea mas intuitivo para el usuario
 se corrigieron errores que habian en la logica del proyecto
 
-## Aspectos a mejorar:
+- Aspectos a mejorar:
 
 hubo problemas en el nombre de las varibles para la portada y el avatar complicando la incorporacion del avatar
 
-## Plan de mejora para el siguiente sprint
+- Plan de mejora para el siguiente sprint
 
 Mejorar el nombramiento de las varibles para no tener problemas a futuro.
 
@@ -146,16 +146,30 @@ y en la expansión de funcionalidades administrativas, se buscó optimizar la ge
 perfiles y navegación general de la plataforma, además de mejorar el diseño visual 
 de las vistas del sistema.
 
-## Aspectos positivos:
+- Aspectos positivos:
 
 Se implementó un buscador funcional conectado a Sequelize y MySQL.
 
-## Aspectos a mejorar:
+- Aspectos a mejorar:
 
 Implementar búsqueda inteligente o aproximada (fuzzy search), añadir filtros
 
-## Plan de mejora para el siguiente sprint
+- Plan de mejora para el siguiente sprint
 
 Continuar fortaleciendo la experiencia de usuario y 
 la arquitectura de GameZone mediante mejoras visuales,
 optimización de funcionalidades existentes
+
+## Retrospectiva Sprint 7:
+- Aspectos positivos:
+Se implementaron validaciones del lado del cliente usando JavaScript.
+Se corrigió el problema de recarga de formularios usando preventDefault().
+Se implementó validación con Express Validator en el backend.
+
+- Aspectos a mejorar:
+Inicialmente, las validaciones frontend no funcionaban por:
+   _Uso de document.querySelector("form") (tomaba el navbar).
+    _Falta de id en varios inputs del formulario.
+    _Errores de rutas en scripts (Bootstrap JS no encontrado).
+Problemas de validación con imágenes locales (/images/...) por regex demasiado restrictiva.
+Confusión entre validación frontend y backend al principio del sprint.
